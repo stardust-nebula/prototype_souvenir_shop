@@ -1,0 +1,699 @@
+{
+	"info": {
+		"_postman_id": "9219b20e-1b0d-44ee-8c97-2f454a076e82",
+		"name": "Souvenir Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Controller",
+			"item": [
+				{
+					"name": "registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"lera\",\r\n    \"lastName\":\"m\",\r\n    \"emailAddress\":\"lera@sdf.com\",\r\n    \"password\":\"test22\",\r\n    \"userRole\":null,\r\n    \"username\":\"lerausername\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/registration",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"registration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "a966769d-891f-4a92-b4b3-921610d1fb90",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/user/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change role of the User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/changeUserRole?userId=7&userRole=ADMIN_ROLE",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"changeUserRole"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "7"
+								},
+								{
+									"key": "userRole",
+									"value": "ADMIN_ROLE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"rossoneri\",\r\n    \"password\": \"test22\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/authorize",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"authorize"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product Controller",
+			"item": [
+				{
+					"name": "Get list of products that match requested name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/product/getProductsByName?productName=Ring",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"getProductsByName"
+							],
+							"query": [
+								{
+									"key": "productName",
+									"value": "Ring"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of product by price",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/product/getProductsByPrice?price=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"getProductsByPrice"
+							],
+							"query": [
+								{
+									"key": "price",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get rpoduct by status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/product/getProducts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"getProducts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin Controller",
+			"item": [
+				{
+					"name": "Get Disabled Products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "7a4c5291-9e0f-4eb9-b044-f095a75d875f",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/admin/getDisabledProducts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"getDisabledProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change product name",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/product/changeProductName?productId=1&productName=Ring",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"changeProductName"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "1"
+								},
+								{
+									"key": "productName",
+									"value": "Ring"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change product status",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/product/changeProductStatus?productId=1&status=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"changeProductStatus"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "1"
+								},
+								{
+									"key": "status",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "de3795fd-aadc-43ee-971c-514a0a859a79",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Ring\",\r\n    \"description\":\"Golden ring\",\r\n    \"price\":\"3.50\",\r\n    \"statusIsEnabled\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/admin/addProduct",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"addProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Chnage product description",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/product/changeProductDescription?productId=4&productDescription=Ring",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"changeProductDescription"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "4"
+								},
+								{
+									"key": "productDescription",
+									"value": "Ring"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change product price",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/product/changeProductPrice?productId=4&productPrice=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"changeProductPrice"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "4"
+								},
+								{
+									"key": "productPrice",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/order/cancel/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"cancel",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Chnage user role",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/admin/changeUserRole?userId=2&userRoleEnum=ADMIN",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"changeUserRole"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "2"
+								},
+								{
+									"key": "userRoleEnum",
+									"value": "ADMIN"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order Controller",
+			"item": [
+				{
+					"name": "Complete order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "de3795fd-aadc-43ee-971c-514a0a859a79",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/order/complete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"complete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/order/userOrders?userId=9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"userOrders"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart Controller",
+			"item": [
+				{
+					"name": "Add product item to Cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "de3795fd-aadc-43ee-971c-514a0a859a79",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cart/addItem?productId=2&userId=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cart",
+								"addItem"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "2"
+								},
+								{
+									"key": "userId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get order details (by order id)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/cart/getOrderDetails?orderId=8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cart",
+								"getOrderDetails"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete order item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/cart/deleteItem?orderItemId=390",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cart",
+								"deleteItem"
+							],
+							"query": [
+								{
+									"key": "orderItemId",
+									"value": "390"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Scheduled task",
+			"item": [
+				{
+					"name": "Delete expired Tokens Task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/deleteTokens",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"deleteTokens"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
