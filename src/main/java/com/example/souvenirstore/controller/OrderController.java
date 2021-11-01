@@ -1,6 +1,6 @@
 package com.example.souvenirstore.controller;
 
-import com.example.souvenirstore.emailSending.v2.EmailSenderService;
+import com.example.souvenirstore.emailSending.EmailSenderService;
 import com.example.souvenirstore.entity.Order;
 import com.example.souvenirstore.exception.ExceptionHandler;
 import com.example.souvenirstore.service.OrderService;

@@ -19,7 +19,7 @@ public class UserInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Optional<String> header = Optional.ofNullable(request.getHeader("X-Token"));
-        if (!header.isPresent()) {
+        if (header.isPresent()) {
             UUID tokenUuid = UUID.fromString(header.get());
             boolean isTokenExists = tokenService.isUserTokenExist(tokenUuid);
             long tokenId = tokenService.getTokenByUuid(tokenUuid).getId();

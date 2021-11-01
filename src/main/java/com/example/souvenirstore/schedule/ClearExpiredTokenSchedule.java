@@ -4,6 +4,7 @@ import com.example.souvenirstore.service.TokenService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -12,7 +13,6 @@ import java.time.LocalDate;
 
 @Slf4j
 @Component
-
 public class ClearExpiredTokenSchedule {
 
     @Autowired
@@ -23,7 +23,7 @@ public class ClearExpiredTokenSchedule {
         log.info("Delete expired tokens scheduled task STARTED");
         tokenService.deleteAllExpiredTokens();
         log.info("Delete expired tokens scheduled task FINISHED");
+
+
     }
-
-
 }

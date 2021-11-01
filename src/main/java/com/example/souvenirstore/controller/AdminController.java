@@ -31,7 +31,7 @@ public class AdminController {
     @Autowired
     private OrderService orderService;
 
-    @PostMapping("/changeUserRole")
+    @PutMapping("/changeUserRole")
     public ResponseEntity<Object> changeUserRole(@RequestHeader(name = "X-Token") UUID xToken, long userId, UserRoleEnum userRoleEnum){
         userService.changeUserRole(userId, userRoleEnum.name());
         User user = userService.getUserById(userId);
@@ -55,12 +55,12 @@ public class AdminController {
         }
     }
 
-    @PostMapping("/changeProductStatus")
+    @PutMapping("/changeProductStatus")
     public void changeProductStatus(@RequestHeader(name = "X-Token") UUID xToken, long productId, boolean status){
         productService.changeProductAvailabilityStatus(productId, status);
     }
 
-    @PostMapping("/changeProductName")
+    @PutMapping("/changeProductName")
     public ResponseEntity changeProductName(@RequestHeader(name = "X-Token") UUID xToken, long productId,String productName){
         try {
             productService.changeProductName(productId, productName);
@@ -72,12 +72,12 @@ public class AdminController {
         }
     }
 
-    @PostMapping("/changeProductDescription")
+    @PutMapping("/changeProductDescription")
     public void changeProductDescription(@RequestHeader(name = "X-Token") UUID xToken, long productId, String productDescription) {
         productService.changeProductDescription(productId, productDescription);
     }
 
-    @PostMapping("/changeProductPrice")
+    @PutMapping("/changeProductPrice")
     public void changeProductPrice(@RequestHeader(name = "X-Token") UUID xToken, long productId, double productPrice) {
         productService.changeProductPrice(productId, productPrice);
     }

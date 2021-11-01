@@ -75,9 +75,4 @@ public class UserController {
         return ResponseEntity.ok("The user is logout");
     }
 
-    @PostMapping("/deleteTokens")
-    public void clearTokens(){
-        tokenService.deleteAllExpiredTokens();
-    }
-
 }
