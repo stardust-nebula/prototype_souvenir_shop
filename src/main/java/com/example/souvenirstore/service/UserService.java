@@ -75,6 +75,4 @@ public class UserService {
     public void changeUserRole(long userId, String userRole) {
         userRepository.changeUserRole(userId, UserRoleEnum.valueOf(userRole));
     }
-
-
 }

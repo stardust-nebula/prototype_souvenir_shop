@@ -6,18 +6,9 @@ import com.example.souvenirstore.repository.TokenRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,8 +22,10 @@ public class TokenService {
 
     public boolean isUserTokenExist(UUID uuid) {
         if (tokenRepository.existsTokenByUuid(uuid)) {
+            log.info("IN isUserTokenExist: Token with {} uuid exists", uuid);
             return true;
         }
+        log.info("IN isUserTokenExist: Token with {} uuid does not exist", uuid);
         return false;
     }
 
@@ -43,6 +36,7 @@ public class TokenService {
         token.setCreatedDateTime(LocalDateTime.now());
         LocalDateTime expDate = LocalDateTime.now().plusMinutes(60);
         token.setExpireDateTime(expDate);
+        log.info("IN save: Save toke - {}", token);
         return tokenRepository.save(token);
     }
 
@@ -67,6 +61,7 @@ public class TokenService {
 
 
         if (isExpEqNow || isExpInPast) {
+            log.info("IN isTokenActive: Token is expired - {}", token);
             return false;
         }
         return true;
@@ -78,8 +73,10 @@ public class TokenService {
                 .anyMatch(i -> isTokenActive(i.getId()));
 
         if (userTokenList.isEmpty() || !isActiveExist) {
+            log.info("IN isUserHasActiveToken: User does not have active token");
             return false;
         } else {
+            log.info("IN isUserHasActiveToken: User has active token");
             return true;
         }
     }
@@ -97,9 +94,9 @@ public class TokenService {
     public void deleteAllExpiredTokens() {
         LocalDateTime currentDateTime = LocalDateTime.now();
         log.info("Getting list of expired tokens");
-       List<Token> tokenList = tokenRepository.getAllByExpireDateTimeBefore(currentDateTime);
+        List<Token> tokenList = tokenRepository.getAllByExpireDateTimeBefore(currentDateTime);
         log.info("{} expired tokens found", tokenList.size());
-       tokenList.stream()
-               .forEach(t -> delete(t));
+        tokenList.stream()
+                .forEach(t -> delete(t));
     }
 }

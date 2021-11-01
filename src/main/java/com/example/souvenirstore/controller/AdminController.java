@@ -8,6 +8,7 @@ import com.example.souvenirstore.exception.ExceptionHandler;
 import com.example.souvenirstore.service.OrderService;
 import com.example.souvenirstore.service.ProductService;
 import com.example.souvenirstore.service.UserService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +33,7 @@ public class AdminController {
     private OrderService orderService;
 
     @PutMapping("/changeUserRole")
+    @ApiOperation(value = "Change user role")
     public ResponseEntity<Object> changeUserRole(@RequestHeader(name = "X-Token") UUID xToken, long userId, UserRoleEnum userRoleEnum){
         userService.changeUserRole(userId, userRoleEnum.name());
         User user = userService.getUserById(userId);
@@ -39,11 +41,13 @@ public class AdminController {
     }
 
     @GetMapping("/getAll")
+    @ApiOperation(value = "Get all users")
     public List<User> getUsers(@RequestHeader(name = "X-Token") UUID xToken) {
         return userService.findAll();
     }
 
     @PostMapping("/addProduct")
+    @ApiOperation(value = "Add new product")
     public ResponseEntity<Object> addProduct(@RequestHeader(name = "X-Token") UUID xToken, @RequestBody Product product) {
         try {
             productService.save(product);
@@ -56,11 +60,13 @@ public class AdminController {
     }
 
     @PutMapping("/changeProductStatus")
+    @ApiOperation(value = "Change product status")
     public void changeProductStatus(@RequestHeader(name = "X-Token") UUID xToken, long productId, boolean status){
         productService.changeProductAvailabilityStatus(productId, status);
     }
 
     @PutMapping("/changeProductName")
+    @ApiOperation(value = "Change product name")
     public ResponseEntity changeProductName(@RequestHeader(name = "X-Token") UUID xToken, long productId,String productName){
         try {
             productService.changeProductName(productId, productName);
@@ -73,21 +79,25 @@ public class AdminController {
     }
 
     @PutMapping("/changeProductDescription")
+    @ApiOperation(value = "Change product description")
     public void changeProductDescription(@RequestHeader(name = "X-Token") UUID xToken, long productId, String productDescription) {
         productService.changeProductDescription(productId, productDescription);
     }
 
     @PutMapping("/changeProductPrice")
+    @ApiOperation(value = "Change product price")
     public void changeProductPrice(@RequestHeader(name = "X-Token") UUID xToken, long productId, double productPrice) {
         productService.changeProductPrice(productId, productPrice);
     }
 
     @GetMapping("/getDisabledProducts")
+    @ApiOperation(value = "Get all disabled products")
     public List<Product> getProductsByStatus(@RequestHeader(name = "X-Token") UUID xToken) {
         return productService.getProductsByStatus(false);
     }
 
     @PostMapping("cancel/{orderId}")
+    @ApiOperation(value = "Cancel order")
     public ResponseEntity<Object> cancelOrder(@RequestHeader(name = "X-Token") UUID xToken, @PathVariable long orderId) {
         try {
             orderService.cancelOrder(orderId);

@@ -23,7 +23,5 @@ public class ClearExpiredTokenSchedule {
         log.info("Delete expired tokens scheduled task STARTED");
         tokenService.deleteAllExpiredTokens();
         log.info("Delete expired tokens scheduled task FINISHED");
-
-
     }
 }

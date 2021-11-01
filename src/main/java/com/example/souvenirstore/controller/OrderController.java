@@ -4,6 +4,7 @@ import com.example.souvenirstore.emailSending.EmailSenderService;
 import com.example.souvenirstore.entity.Order;
 import com.example.souvenirstore.exception.ExceptionHandler;
 import com.example.souvenirstore.service.OrderService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,22 +25,25 @@ public class OrderController {
     private EmailSenderService emailSenderService;
 
     @GetMapping("/byOrderNumber")
+    @ApiOperation(value = "Get orders by order number")
     public ResponseEntity<Object> getOrderByOrderNumber(@RequestHeader(name = "X-Token") UUID xToken, String orderNumber) {
         Optional<Order> order = orderService.getOrderByOrderNumber(orderNumber);
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
     @GetMapping("/userOrders")
+    @ApiOperation(value = "Get user orders")
     public ResponseEntity<Object> getOrdersByUser(@RequestHeader(name = "X-Token") UUID xToken, long userId) {
         try {
             List<Order> orderList = orderService.getUserOrderList(userId, xToken);
             return new ResponseEntity<>(orderList, HttpStatus.OK);
-        }catch (ExceptionHandler e){
+        } catch (ExceptionHandler e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
     @PostMapping("/complete/{orderId}")
+    @ApiOperation(value = "Complete order")
     public ResponseEntity<Object> completeOrder(@RequestHeader(name = "X-Token") UUID xToken, @PathVariable long orderId) {
         try {
             orderService.completeOrder(orderId, xToken);
@@ -54,9 +58,9 @@ public class OrderController {
     }
 
     @GetMapping("/getOrderDetails/{orderId}")
+    @ApiOperation(value = "Get order details")
     public ResponseEntity<Object> getOrderDetails(@RequestHeader(name = "X-Token") UUID xToken, @PathVariable long orderId) {
         Optional<Order> order = orderService.getOrderById(orderId);
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
-
 }

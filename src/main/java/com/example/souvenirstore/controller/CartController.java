@@ -4,6 +4,7 @@ import com.example.souvenirstore.entity.Order;
 import com.example.souvenirstore.exception.ExceptionHandler;
 import com.example.souvenirstore.service.OrderItemsService;
 import com.example.souvenirstore.service.OrderService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ public class CartController {
 
 
     @PostMapping("/addItem")
+    @ApiOperation(value = "Add product item to Cart")
     public ResponseEntity<Object> addItemToCart(@RequestHeader(name = "X-Token") UUID xToken, long productId, long userId) {
         try {
             orderItemsService.saveItem(productId, userId);
@@ -38,8 +40,8 @@ public class CartController {
         }
     }
 
-
-    @PostMapping("/deleteItem")
+    @DeleteMapping("/deleteItem")
+    @ApiOperation(value = "Delete product item from Cart")
     public ResponseEntity<Object> deleteItemInCart(@RequestHeader(name = "X-Token") UUID xToken, long orderItemId) {
         try {
             long orderId = orderItemsService.getOrderIdByOrderItemId(orderItemId);
@@ -51,8 +53,5 @@ public class CartController {
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
-
     }
-
-
 }

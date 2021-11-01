@@ -4,6 +4,7 @@ import com.example.souvenirstore.entity.Product;
 import com.example.souvenirstore.exception.ExceptionHandler;
 import com.example.souvenirstore.repository.ProductRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class ProductService {
 
     @Autowired
@@ -21,11 +23,13 @@ public class ProductService {
     public void save(Product product) throws ExceptionHandler {
         boolean isProductNameExist = existsProductByName(product.getName());
         if (isProductNameExist) {
+            log.warn("IN save - product: Product with {} already exists", product.getName());
             throw new ExceptionHandler("Product with \"" + product.getName() + "\" name already exist");
         } else {
             product.setCreationDate(LocalDateTime.now());
             product.setUpdateDate(LocalDateTime.now());
             productRepository.save(product);
+            log.info("IN save - product: Product {} is added", product.getName());
         }
     }
 
@@ -37,14 +41,17 @@ public class ProductService {
             isEnabled = false;
         }
         productRepository.changeProductAvailabilityStatus(productId, isEnabled);
+        log.info("IN changeProductAvailabilityStatus: Product status is changed to {}", status);
     }
 
     public void changeProductName(long productId, String productName) throws ExceptionHandler {
         boolean isProductNameExist = existsProductByName(productName);
         if (isProductNameExist) {
+            log.warn("IN changeProductName: This {} product name already exists", productName);
             throw new ExceptionHandler("Product with \"" + productName + "\" name already exist");
         } else {
             productRepository.changeProductName(productId, productName);
+            log.info("IN changeProductName: Product name is changed to {}", productName);
         }
     }
 
