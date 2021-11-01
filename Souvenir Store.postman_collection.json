@@ -9,7 +9,7 @@
 			"name": "User Controller",
 			"item": [
 				{
-					"name": "registration",
+					"name": "Registration",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -38,13 +38,13 @@
 					"response": []
 				},
 				{
-					"name": "logout",
+					"name": "Logout",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "X-Token",
-								"value": "a966769d-891f-4a92-b4b3-921610d1fb90",
+								"value": "e1587012-d668-4b39-b1ea-d498f1b45931",
 								"type": "text"
 							}
 						],
@@ -94,13 +94,13 @@
 					"response": []
 				},
 				{
-					"name": "login",
+					"name": "Login",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"rossoneri\",\r\n    \"password\": \"test22\"\r\n}",
+							"raw": "{\r\n    \"username\": \"lerausername\",\r\n    \"password\": \"test22\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -125,101 +125,6 @@
 			]
 		},
 		{
-			"name": "Product Controller",
-			"item": [
-				{
-					"name": "Get list of products that match requested name",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Token",
-								"value": "",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/product/getProductsByName?productName=Ring",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"product",
-								"getProductsByName"
-							],
-							"query": [
-								{
-									"key": "productName",
-									"value": "Ring"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get list of product by price",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Token",
-								"value": "",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/product/getProductsByPrice?price=10",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"product",
-								"getProductsByPrice"
-							],
-							"query": [
-								{
-									"key": "price",
-									"value": "10"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get rpoduct by status",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Token",
-								"value": "",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/product/getProducts",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"product",
-								"getProducts"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Admin Controller",
 			"item": [
 				{
@@ -229,7 +134,7 @@
 						"header": [
 							{
 								"key": "X-Token",
-								"value": "7a4c5291-9e0f-4eb9-b044-f095a75d875f",
+								"value": "35aa76af-5bfb-44df-a77f-86b9cbcaa0a0",
 								"type": "text"
 							}
 						],
@@ -251,33 +156,33 @@
 				{
 					"name": "Change product name",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "X-Token",
-								"value": "",
+								"value": "35aa76af-5bfb-44df-a77f-86b9cbcaa0a0",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/product/changeProductName?productId=1&productName=Ring",
+							"raw": "http://localhost:8080/admin/changeProductName?productId=3&productName=New Map",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"product",
+								"admin",
 								"changeProductName"
 							],
 							"query": [
 								{
 									"key": "productId",
-									"value": "1"
+									"value": "3"
 								},
 								{
 									"key": "productName",
-									"value": "Ring"
+									"value": "New Map"
 								}
 							]
 						}
@@ -287,23 +192,23 @@
 				{
 					"name": "Change product status",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "X-Token",
-								"value": "",
+								"value": "35aa76af-5bfb-44df-a77f-86b9cbcaa0a0",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/product/changeProductStatus?productId=1&status=true",
+							"raw": "http://localhost:8080/admin/changeProductStatus?productId=1&status=true",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"product",
+								"admin",
 								"changeProductStatus"
 							],
 							"query": [
@@ -327,13 +232,13 @@
 						"header": [
 							{
 								"key": "X-Token",
-								"value": "de3795fd-aadc-43ee-971c-514a0a859a79",
+								"value": "35aa76af-5bfb-44df-a77f-86b9cbcaa0a0",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Ring\",\r\n    \"description\":\"Golden ring\",\r\n    \"price\":\"3.50\",\r\n    \"statusIsEnabled\":true\r\n}",
+							"raw": "{\r\n    \"name\":\"Map\",\r\n    \"description\":\"Map\",\r\n    \"price\":\"3.50\",\r\n    \"statusIsEnabled\":true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -356,35 +261,35 @@
 					"response": []
 				},
 				{
-					"name": "Chnage product description",
+					"name": "Change product description",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "X-Token",
-								"value": "",
+								"value": "35aa76af-5bfb-44df-a77f-86b9cbcaa0a0",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/product/changeProductDescription?productId=4&productDescription=Ring",
+							"raw": "http://localhost:8080/admin/changeProductDescription?productId=2&productDescription=Golder ring",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"product",
+								"admin",
 								"changeProductDescription"
 							],
 							"query": [
 								{
 									"key": "productId",
-									"value": "4"
+									"value": "2"
 								},
 								{
 									"key": "productDescription",
-									"value": "Ring"
+									"value": "Golder ring"
 								}
 							]
 						}
@@ -394,29 +299,29 @@
 				{
 					"name": "Change product price",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "X-Token",
-								"value": "",
+								"value": "35aa76af-5bfb-44df-a77f-86b9cbcaa0a0",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/product/changeProductPrice?productId=4&productPrice=10",
+							"raw": "http://localhost:8080/admin/changeProductPrice?productId=3&productPrice=10",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"product",
+								"admin",
 								"changeProductPrice"
 							],
 							"query": [
 								{
 									"key": "productId",
-									"value": "4"
+									"value": "3"
 								},
 								{
 									"key": "productPrice",
@@ -439,14 +344,14 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/order/cancel/9",
+							"raw": "http://localhost:8080/admin/cancel/9",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"order",
+								"admin",
 								"cancel",
 								"9"
 							]
@@ -455,13 +360,13 @@
 					"response": []
 				},
 				{
-					"name": "Chnage user role",
+					"name": "Change user role",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "X-Token",
-								"value": "",
+								"value": "35aa76af-5bfb-44df-a77f-86b9cbcaa0a0",
 								"type": "text"
 							}
 						],
@@ -611,12 +516,12 @@
 						"header": [
 							{
 								"key": "X-Token",
-								"value": "",
+								"value": "275feba3-08d5-4a23-885e-5c0055c78dac",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/cart/getOrderDetails?orderId=8",
+							"raw": "http://localhost:8080/cart/getOrderDetails?orderId=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -629,7 +534,7 @@
 							"query": [
 								{
 									"key": "orderId",
-									"value": "8"
+									"value": "1"
 								}
 							]
 						}
@@ -643,7 +548,7 @@
 						"header": [
 							{
 								"key": "X-Token",
-								"value": "",
+								"value": "35aa76af-5bfb-44df-a77f-86b9cbcaa0a0",
 								"type": "text"
 							}
 						],
@@ -671,23 +576,93 @@
 			]
 		},
 		{
-			"name": "Scheduled task",
+			"name": "Product controller",
 			"item": [
 				{
-					"name": "Delete expired Tokens Task",
+					"name": "Get products by name",
 					"request": {
-						"method": "POST",
-						"header": [],
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "35aa76af-5bfb-44df-a77f-86b9cbcaa0a0",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8080/user/deleteTokens",
+							"raw": "http://localhost:8080/product/getProductsByName?productName=Map",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"user",
-								"deleteTokens"
+								"product",
+								"getProductsByName"
+							],
+							"query": [
+								{
+									"key": "productName",
+									"value": "Map"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get products by price",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "35aa76af-5bfb-44df-a77f-86b9cbcaa0a0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/product/getProductsByPrice?price=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"getProductsByPrice"
+							],
+							"query": [
+								{
+									"key": "price",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get available products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "35aa76af-5bfb-44df-a77f-86b9cbcaa0a0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/product/getProducts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"getProducts"
 							]
 						}
 					},
